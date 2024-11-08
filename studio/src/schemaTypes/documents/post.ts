@@ -47,6 +47,14 @@ export default defineType({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
+      description: 'A brief summary or preview of the post content',
+    }),
+    defineField({
+      name: 'readTime',
+      title: 'Read Time',
+      type: 'number',
+      description: 'Estimated read time in minutes',
+      validation: (rule) => rule.min(1).integer(),
     }),
     defineField({
       name: 'coverImage',
@@ -87,6 +95,29 @@ export default defineType({
       title: 'Author',
       type: 'reference',
       to: [{type: 'person'}],
+    }),
+    defineField({
+      name: 'contentBuilder',
+      title: 'Content builder',
+      type: 'array',
+      of: [
+        {type: 'bannerProfileOverviewSection'},
+        {type: 'imageGallery'},
+        {type: 'audioSection'},
+        {type: 'quoteSection'},
+        {type: 'instagramCard'},
+      ],
+      options: {
+        insertMenu: {
+          views: [
+            {
+              name: 'grid',
+              // previewImageUrl: (schemaTypeName) =>
+              //   `/static/page-builder-thumbnails/${schemaTypeName}.webp`,
+            },
+          ],
+        },
+      },
     }),
   ],
   preview: {

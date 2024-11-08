@@ -7,6 +7,12 @@ import infoSection from './objects/infoSection'
 import settings from './singletons/settings'
 import link from './objects/link'
 import blockContent from './objects/blockContent'
+import bannerProfileOverviewSection from './objects/bannerProfileOverviewSection'
+import imageGallery from './objects/imageGallery'
+import imageWithCaption from './objects/imageWithCaption'
+import audioSection from './objects/audioSection'
+import quoteSection from './objects/quoteSection'
+import instagramCard from './objects/instagramCard'
 
 export const schemaTypes = [
   // Singletons
@@ -20,4 +26,11 @@ export const schemaTypes = [
   infoSection,
   callToAction,
   link,
+  
+  bannerProfileOverviewSection,
+  imageWithCaption,
+  imageGallery,
+  audioSection,
+  quoteSection,
+  instagramCard,
 ]
