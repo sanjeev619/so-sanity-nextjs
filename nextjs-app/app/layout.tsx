@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/styles/globals.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
@@ -6,7 +6,7 @@ import { Inter } from "next/font/google";
 import { draftMode } from "next/headers";
 import { VisualEditing, toPlainText } from "next-sanity";
 import { Toaster } from "sonner";
-
+import localFont from "next/font/local";
 import DraftModeToast from "@/app/components/DraftModeToast";
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
@@ -15,6 +15,14 @@ import * as demo from "@/sanity/lib/demo";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { settingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/utils";
+import { ChakraProvider } from "@chakra-ui/react";
+import ChakraWrapper from "./components/ChakraWrapper";
+
+const palatinolinotype = localFont({
+  src: "./fonts/palatinolinotype_roman.ttf",
+  variable: "--font-palatinolinotype",
+  weight: "100 900",
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data: settings } = await sanityFetch({
@@ -22,6 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Metadata should never contain stega
     stega: false,
   });
+
   const title = settings?.title || demo.title;
   const description = settings?.description || demo.description;
 
@@ -61,24 +70,9 @@ export default async function RootLayout({
   const { isEnabled: isDraftMode } = await draftMode();
 
   return (
-    <html lang="en" className={`${inter.variable} bg-white text-black`}>
-      <body>
-        <section className="min-h-screen pt-24">
-          <Toaster />
-          {isDraftMode && (
-            <>
-              <DraftModeToast />
-              <VisualEditing />
-            </>
-          )}
-          <LiveErrorBoundary>
-            <SanityLive />
-          </LiveErrorBoundary>
-          <Header />
-          <main className="">{children}</main>
-          <Footer />
-        </section>
-        <SpeedInsights />
+    <html lang="en">
+      <body className={`${palatinolinotype.variable}`}>
+      <ChakraWrapper>{children}</ChakraWrapper>
       </body>
     </html>
   );
