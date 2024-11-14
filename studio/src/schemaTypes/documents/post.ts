@@ -140,6 +140,7 @@ export default defineType({
       },
       initialValue: 'draft',
       validation: (Rule) => Rule.required(),
+      hidden: true,
     }),
   ],
   preview: {
