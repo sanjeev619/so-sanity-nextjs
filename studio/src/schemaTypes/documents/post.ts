@@ -106,6 +106,7 @@ export default defineType({
         {type: 'audioSection'},
         {type: 'quoteSection'},
         {type: 'instagramCard'},
+        {type: 'richTextSection'},
       ],
       options: {
         insertMenu: {

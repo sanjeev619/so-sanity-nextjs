@@ -13,6 +13,7 @@ import imageWithCaption from './objects/imageWithCaption'
 import audioSection from './objects/audioSection'
 import quoteSection from './objects/quoteSection'
 import instagramCard from './objects/instagramCard'
+import richTextSection from './objects/richTextSection'
 
 export const schemaTypes = [
   // Singletons
@@ -33,4 +34,5 @@ export const schemaTypes = [
   audioSection,
   quoteSection,
   instagramCard,
+  richTextSection,
 ]
