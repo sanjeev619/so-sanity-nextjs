@@ -62,7 +62,7 @@ export const PeopleBehindTheCupClient:FC<PeopleBehindTheCupClientProps> = ({peop
                 bgRepeat="no-repeat"
               />
               <Text ml={isMobile ? '15px' : undefined} mb={'10px'} lineHeight={'30px'} textTransform={'uppercase'} fontWeight={'bold'} fontSize={'16px'}>{story.title}</Text>  
-              <Text ml={isMobile ? '15px' : undefined} mb={'10px'} lineHeight={'30px'} fontSize={'24px'} fontFamily={'Palatino Linotype'}>{story.excerpt}</Text>  
+              <Text ml={isMobile ? '15px' : undefined} mb={'10px'} lineHeight={'30px'} fontSize={'24px'} fontFamily={'Palatino Linotype'}>{story?.excerpt}</Text>  
               <Text ml={isMobile ? '15px' : undefined} fontSize={'18px'}>{story.readTime} mins read</Text>  
             </GridItem>
           ))}

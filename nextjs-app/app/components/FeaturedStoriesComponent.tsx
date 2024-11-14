@@ -6,6 +6,7 @@ import { FeaturedStoriesClient } from "./FeatureStoriesComponentClient";
 
 export const FeaturedStories = async () => {
   const { data } = await sanityFetch({ query: postsByArticleTypeQuery("featured stories") });
+  console.log(data, 'ramvinay')
   return (
     <FeaturedStoriesClient featureStoriesData={data}/>
   );

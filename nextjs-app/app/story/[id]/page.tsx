@@ -15,7 +15,7 @@ const StoryPage: React.FC<ArticlePageProps> = async ({params}) => {
         className="main"
         style={{ width: "100%", height: "100vh", overflow: "auto" }}
       >
-        <Navbar title={undefined} />
+        <Navbar title={data[0]?.articleType} />
         <AllStories featureStoriesData={data} />
       </div>
       

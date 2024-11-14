@@ -17,7 +17,6 @@ import FeaturedArrow from "@/app/icons/featured_arrow";
 import Logo from "@/app/icons/logo";
 import { LeftBar } from "@/common components/left-bar";
 import DiagonaArrow from "@/app/icons/arrow-diagonal";
-import { articleStories, featuredStories } from "@/constants/sample-data";
 import imageUrlBuilder from '@sanity/image-url';
 import { client } from "@/sanity/lib/client";
 import { useRouter } from 'next/navigation';
@@ -45,7 +44,7 @@ export const AllStories:FC<AllStoriesProps> = ({featureStoriesData})=> {
       >
         <Box mb={10}>
           <Heading textTransform={'uppercase'} ml={isMobile ? '15px' : undefined} justifyContent={isMobile ? 'center' : undefined} mt={isMobile ? '40px' : undefined} mb={'20px'} display={"flex"} fontSize={"24px"} fontWeight={"medium"}>
-            {articleStories?.articleType}
+            {featureStoriesData[0]?.articleType}
             <FeaturedArrow stroke={"#87B79D"} />
           </Heading>
           <Text fontSize={'18px'}>Check out the most inspiring stories from the worlf of coffee curated for you in form of featured stories and some more description to be added.</Text>
@@ -70,7 +69,7 @@ export const AllStories:FC<AllStoriesProps> = ({featureStoriesData})=> {
                 bgPosition="center" // Sets image position
                 bgRepeat="no-repeat"
               />
-              <Text ml={isMobile ? '15px' : undefined} mb={'10px'} lineHeight={'30px'} fontSize={'24px'} fontFamily={'Palatino Linotype'}>{story.excerpt}</Text>  
+              <Text ml={isMobile ? '15px' : undefined} mb={'10px'} lineHeight={'30px'} fontSize={'24px'} fontFamily={'Palatino Linotype'}>{story?.excerpt}</Text>  
               <Text ml={isMobile ? '15px' : undefined} fontSize={'18px'}>{story.readTime} mins read</Text>  
             </GridItem>
           ))}

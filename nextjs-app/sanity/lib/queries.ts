@@ -29,6 +29,7 @@ const postFields = /* groq */ `
   "date": coalesce(date, _updatedAt),
   "author": author->{firstName, lastName, picture},
   articleType,
+  contentBuilder,
   readTime
 `;
 
