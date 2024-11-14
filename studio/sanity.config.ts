@@ -110,6 +110,31 @@ export default defineConfig({
     visionTool(),
   ],
 
+  document: {
+    actions: (prev, context) => {
+      const {schemaType, currentUser} = context
+      const userRole = currentUser?.role
+
+      // Check the document type
+      if (schemaType === 'post') {
+        return prev.filter((action) => {
+          // Custom logic based on user role and action name
+          if (userRole === 'contributor') {
+            return action.name !== 'PublishAction' && action.name !== 'ApproveAction'
+          }
+          if (userRole === 'editor') {
+            return action.name !== 'PublishAction'
+          }
+          // Administrator or other roles can perform all actions
+          return true
+        })
+      }
+
+      // For other document types, return the default actions
+      return prev
+    },
+  },
+
   schema: {
     types: schemaTypes,
   },

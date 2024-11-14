@@ -120,6 +120,21 @@ export default defineType({
         },
       },
     }),
+    defineField({
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Draft', value: 'draft'},
+          {title: 'In Review', value: 'inReview'},
+          {title: 'Approved', value: 'approved'},
+          {title: 'Published', value: 'published'},
+        ],
+      },
+      initialValue: 'draft',
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {
     select: {
