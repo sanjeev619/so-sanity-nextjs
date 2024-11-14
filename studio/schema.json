@@ -1195,6 +1195,27 @@
         },
         "optional": false
       },
+      "articleType": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
+      "readTime": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "number"
+        },
+        "optional": false
+      },
+      "contentBuilder": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array"
+        },
+        "optional": true
+      },
       "slug": {
         "type": "objectAttribute",
         "value": {

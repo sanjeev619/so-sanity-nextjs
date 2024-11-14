@@ -44,6 +44,12 @@ export default defineType({
       type: 'blockContent',
     }),
     defineField({
+      name: 'articleType',
+      title: 'Article type',
+      type: 'string',
+      description: 'featured stories, people behind the cup....',
+    }),
+    defineField({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',

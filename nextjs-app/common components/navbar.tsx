@@ -14,7 +14,10 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Logo from '@/app/icons/logo';
 import Link from 'next/link';
 
-const Navbar: React.FC = () => {
+type NavbarProps = {
+  title: string | undefined;
+}
+const Navbar: React.FC<NavbarProps> = ({title=undefined}) => {
   const { isOpen, onToggle } = useDisclosure(); // Manage the toggle state for the menu
 
   return (
@@ -31,6 +34,11 @@ const Navbar: React.FC = () => {
             <Logo width={"89"} height={"40"} color={"#1E1E13"} cursor={'pointer'}/>
           </Text>
         </Link>
+        {title && <Link href="#" passHref>
+          <Text fontSize="xl" fontWeight="normal" textDecoration={'underline'} textTransform={'uppercase'}>
+            {title}
+          </Text>
+        </Link>}
         <IconButton
           aria-label="Toggle Navigation"
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}

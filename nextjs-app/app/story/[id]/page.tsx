@@ -1,25 +1,25 @@
-"use client";
 import Navbar from '@/common components/navbar';
 import { Box, ChakraProvider, Flex, Heading, Text } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
-import AllStories from './components/all-stories';
+import {AllStories} from './components/all-stories';
+import { postsByArticleTypeQuery } from '@/sanity/lib/queries';
+import { sanityFetch } from '@/sanity/lib/live';
 
 interface ArticlePageProps {
   params: { id: string };
 }
 
-const ArticlePage: React.FC<ArticlePageProps> = ({params}) => {
-  
+const StoryPage: React.FC<ArticlePageProps> = async ({params}) => {
+  const { data } = await sanityFetch({ query: postsByArticleTypeQuery(params.id) });
   return <ChakraProvider>
     <div
         className="main"
         style={{ width: "100%", height: "100vh", overflow: "auto" }}
       >
-        <Navbar />
-        <AllStories/>
+        <Navbar title={undefined} />
+        <AllStories featureStoriesData={data} />
       </div>
       
   </ChakraProvider>
 };
 
-export default ArticlePage;
+export default StoryPage;

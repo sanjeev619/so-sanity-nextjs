@@ -12,6 +12,7 @@ import SoFooterLogo from "./icons/so-coffee-footer";
 import MailIcon from "./icons/mail-icon";
 import Navbar from "@/common components/navbar";
 import '@/styles/globals.css'
+import { PeopleBehindTheCup } from "./components/PeopleBehindTheCupComponent";
 
 export default function Home() {
   const isMobile = false;
@@ -30,14 +31,15 @@ export default function Home() {
                 alt="A descriptive text for the GIF"
                 maxW="30px" // limits the width to 300px
                 transform="rotate(-45deg)"
-                float={'right'}
+                pos={'absolute'}
+                right={'-50px'}
               />
             </Heading>
           </Box>
         </Box>
         <Navbar />
         <FeaturedStories />
-        <PeopleBehind />
+        <PeopleBehindTheCup/>
         <FirstPrinciple />
         <StoriesFromEstate />
         <StayConnected />
@@ -66,7 +68,7 @@ export default function Home() {
             <Text mb={'10px'}>Let’s chat over a cup of coffee? Please write to:</Text>
             <Flex><MailIcon style={{ marginRight: '10px' }} />hello@socoffee.club</Flex>
           </Flex>
-        </Flex>
+        </Flex> 
       </div>
   );
 }
