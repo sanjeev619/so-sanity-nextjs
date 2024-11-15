@@ -20,6 +20,8 @@ import AudioPlayer from "@/app/components/AudioPlayer";
 import { client } from "@/sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
 import { useRouter } from "next/navigation";
+import { TopBar } from "@/common components/top-bar";
+import SoLogo from "@/app/icons/so-logo";
 
 type ArticleProps = {
   articleData: any;
@@ -153,8 +155,20 @@ const ArticleStories: FC<ArticleProps> = ({ articleData }) => {
                       <Heading fontSize="40px" lineHeight="48px" fontFamily="Brocha W00 Regular, sans-serif">
                         {post?.title}
                       </Heading>
-                      <AudioPlayer key={post?.audioFile?.asset?._ref} audioRef={post?.audioFile?.asset?._ref} />
+                      <AudioPlayer primaryColor={post?.leftBorderColour} key={post?.audioFile?.asset?._ref} audioRef={post?.audioFile?.asset?._ref} />
                   </Flex>
+                  </Flex>
+                </GridItem>
+                case "instagramCard":
+                  return <GridItem key={`quoteSection-${index}`} p="0 200px" mt="20px">
+                  <Flex justifyContent={'space-between'} px={'100px'}>
+                    <Flex flexDir={'column'} alignItems={'center'}justifyContent={'center'}>
+                      <SoLogo color="#B2B2B2"/>
+                      <Heading color={'#B2B2B2'}>Follow</Heading>
+                      <Heading color={'#B2B2B2'}>us on</Heading>
+                      <Heading textDecoration={'underline'} color={'#87B79D'}>Instagram</Heading>
+                    </Flex>
+                    <Box dangerouslySetInnerHTML={{ __html: post?.linkText }} />
                   </Flex>
                 </GridItem>
                 case "bannerProfileOverviewSection":

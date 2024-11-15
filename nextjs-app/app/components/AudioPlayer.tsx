@@ -14,7 +14,7 @@ function getAudioUrl(ref: string): string {
   return `https://cdn.sanity.io/files/${client.config().projectId}/${client.config().dataset}/${id}.${extension}`;
 }
 
-const AudioPlayer = ({ audioRef }: { audioRef: string }) => {
+const AudioPlayer = ({ audioRef, primaryColor = "#f76565"  }: { audioRef: string, primaryColor: string}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -32,8 +32,8 @@ const AudioPlayer = ({ audioRef }: { audioRef: string }) => {
       waveSurferRef.current = WaveSurfer.create({
         container: containerRef.current!,
         waveColor: '#ddd',
-        progressColor: '#f76565',
-        cursorColor: '#333',
+        progressColor: primaryColor,
+        cursorColor: 'none',
         barWidth: 2,
         height: 80,
         url: audioUrl
