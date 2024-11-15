@@ -13,6 +13,7 @@ import {
 import {assist} from '@sanity/assist'
 import { StatusBadge } from './src/components/StatusBadge'
 import { CustomDocumentActions } from './src/actions/CustomDocumentActions'
+import { workflow } from 'sanity-plugin-workflow'
 
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'your-projectID'
 const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
@@ -110,6 +111,10 @@ export default defineConfig({
     unsplashImageAsset(),
     assist(),
     visionTool(),
+    workflow({
+      schemaTypes: ['post'],
+      // states: [],
+   })
   ],
 
   schema: {
@@ -121,7 +126,7 @@ export default defineConfig({
       console.log('actions:prev:', prev)
       console.log('actions:context:', context)
       // Override default actions with CustomDocumentActions only for documents of type 'post'
-      if (context.schemaType === 'post') {
+      if (context.schemaType === 'post_temp') {
         return CustomDocumentActions(prev, context);
       }
 
@@ -131,7 +136,7 @@ export default defineConfig({
     badges: (prev, context) => {
       console.log('badges:prev:', prev)
       console.log('badges:context:', context)
-      if (context.schemaType === 'post') {
+      if (context.schemaType === 'post_temp') {
         return StatusBadge(context);
       }
       return prev;
