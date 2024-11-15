@@ -4,8 +4,10 @@ import {
   DocumentActionsContext,
   SanityDocument,
   useClient,
+  useDocumentOperation,
 } from 'sanity'
 import {apiVersion} from '../lib/api'
+import { useEffect, useState } from 'react';
 
 // Define DocumentData to extend SanityDocument
 type DocumentData = SanityDocument & {
@@ -14,25 +16,38 @@ type DocumentData = SanityDocument & {
 
 const SubmitAction = (props: DocumentActionProps) => {
   const client = useClient({apiVersion: apiVersion});
+  const draftId = `drafts.${props.id}`;
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    // if the isPublishing state was set to true and the draft has changed
+    // to become `null` the document has been published
+    if (isSubmitting && !props.draft) {
+      setIsSubmitting(false);
+    }
+  }, [props.draft?._updatedAt])
 
   return {
-    label: 'Submit For Review',
+    disabled: false,
+    label: isSubmitting ? 'Submitting' : 'Submit For Review',
     name: 'SubmitForReview',
     onHandle: async () => {
-      const { id } = props;
-      const draftId = `drafts.${id}`;
+      setIsSubmitting(true);
+
       try {
+        // Update the draft document's status to 'inReview'
         await client
-          .patch(draftId) // Patch the document with the specified ID
+          .patch(draftId) // Patch the draft document by ID
           .set({ status: 'inReview' }) // Set the status to 'inReview'
           .commit(); // Commit the patch to apply changes
 
-        console.log('Document status updated to inReview');
+        console.log('Draft document status updated to inReview');
       } catch (error) {
-        console.error('Error updating document status:', error);
+        console.error('Error updating draft document status:', error);
       }
 
       props.onComplete(); // Signal that the action is complete
+      // window.location.reload();
     },
   }
 };
@@ -41,9 +56,13 @@ const SubmitAction = (props: DocumentActionProps) => {
 export const ApproveAction = (props: DocumentActionProps) => {
   const client = useClient({apiVersion: apiVersion});
 
+  const [isApproving, setIsApproving] = useState(false);
+
   return {
-    label: 'Approve',
+    disabled: false,
+    label: isApproving ? 'Approving' : 'Approve',
     onHandle: async () => {
+      setIsApproving(true);
       const { id } = props;
       const draftId = `drafts.${id}`;
       try {
@@ -59,6 +78,7 @@ export const ApproveAction = (props: DocumentActionProps) => {
       }
 
       props.onComplete(); // Signal that the action is complete
+      // window.location.reload();
     },
   };
 };
