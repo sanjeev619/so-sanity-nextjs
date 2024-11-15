@@ -1,26 +1,41 @@
+import { Flex, Text,Button, useMediaQuery,  } from "@chakra-ui/react";
+import SoFooterLogo from "../icons/so-coffee-footer";
+import DiagonaArrow from "../icons/arrow-diagonal";
+import MailIcon from "../icons/mail-icon";
+
 export default function Footer() {
+  const isMobile = false;
   return (
-    <footer className="bg-gray-50 border-gray-100 border-t">
-      <div className="container">
-        <div className="flex flex-col items-center py-28 lg:flex-row">
-          <h3 className="mb-10 text-center text-4xl font-bold leading-tight tracking-tighter lg:mb-0 lg:w-1/2 lg:pr-4 lg:text-left lg:text-5xl">
-            Built with Sanity + Next.js.
-          </h3>
-          <div className="flex flex-col gap-3 items-center justify-center lg:w-1/2 lg:flex-row lg:pl-4">
-            <a
-              href="https://github.com/sanity-io/sanity-template-nextjs-clean"
-              className="rounded-full flex gap-2 items-center bg-black hover:bg-red-500 focus:bg-cyan-500 py-3 px-6 text-white transition-colors duration-200"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View on GitHub
-            </a>
-            <a href="https://nextjs.org/docs" className="mx-3 hover:underline">
-              Read Next.js Documentation
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <Flex flexDir="column" justifyContent="flex-start" p="130px 130px 10px 130px" w="100%" bg="#204027">
+          <Flex mb="100px" w="100%" alignItems={isMobile ? "center" : undefined} justifyContent={isMobile ? "center" : "space-between"} flexDir={isMobile ? "column" : undefined}>
+            <SoFooterLogo />
+            <Flex w="60%" flexDir="column" alignItems="flex-end">
+              <Text mb="20px" lineHeight="30px" textAlign="end" color="white">
+                SoCoffee is a digital catalyst for India’s coffee ecosystem, with the objective of addressing the farm-to-cup gap through a digital first approach. By leveraging content and digitization, SoCoffee aims to connect growers, businesses, and consumers in a seamless, scalable way. For a start, our platform brings inspiring stories, valuable information, and resources to empower every stakeholder in the
+                coffee value chain.
+              </Text>
+              <Button
+                background="none"
+                color="white"
+                borderRadius="0"
+                fontWeight="normal"
+                border="1px solid #dadada"
+                p="20px 40px"
+                w="300px"
+              >
+                Know more about us
+                <DiagonaArrow stroke="white" style={{ marginLeft: "5px" }} />
+              </Button>
+            </Flex>
+          </Flex>
+
+          <Flex color="white" flexDir="column">
+            <Text mb="10px">Let’s chat over a cup of coffee? Please write to:</Text>
+            <Flex>
+              <MailIcon style={{ marginRight: "10px" }} />
+              hello@socoffee.club
+            </Flex>
+          </Flex>
+        </Flex>
   );
 }

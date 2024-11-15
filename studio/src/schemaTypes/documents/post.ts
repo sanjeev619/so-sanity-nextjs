@@ -44,6 +44,12 @@ export default defineType({
       type: 'blockContent',
     }),
     defineField({
+      name: 'articleType',
+      title: 'Article type',
+      type: 'string',
+      description: 'featured stories, people behind the cup....',
+    }),
+    defineField({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
@@ -119,6 +125,22 @@ export default defineType({
           ],
         },
       },
+    }),
+    defineField({
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Draft', value: 'draft'},
+          {title: 'In Review', value: 'inReview'},
+          {title: 'Approved', value: 'approved'},
+          {title: 'Published', value: 'published'},
+        ],
+      },
+      initialValue: 'draft',
+      validation: (Rule) => Rule.required(),
+      hidden: true,
     }),
   ],
   preview: {

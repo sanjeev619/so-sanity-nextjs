@@ -2,6 +2,23 @@ import { defineQuery } from "next-sanity";
 
 export const settingsQuery = defineQuery(`*[_type == "settings"][0]`);
 
+// Function to generate a query based on articleType
+export function postsByArticleTypeQuery(articleType: string) {
+  return defineQuery(`
+    *[_type == "post" && articleType == "${articleType.replaceAll("%20", " ")}" && defined(slug.current)] | order(date desc, _updatedAt desc) {
+      ${postFields}
+    }
+  `);
+}
+
+export function postsBySlug(slug: string) {
+  return defineQuery(`
+    *[_type == "post" && slug.current == "${slug}" && defined(slug.current)] | order(date desc, _updatedAt desc) {
+      ${postFields}
+    }
+  `);
+}
+
 const postFields = /* groq */ `
   _id,
   "status": select(_originalId in path("drafts.**") => "draft", "published"),
@@ -11,6 +28,9 @@ const postFields = /* groq */ `
   coverImage,
   "date": coalesce(date, _updatedAt),
   "author": author->{firstName, lastName, picture},
+  articleType,
+  contentBuilder,
+  readTime
 `;
 
 const linkFields = /* groq */ `
