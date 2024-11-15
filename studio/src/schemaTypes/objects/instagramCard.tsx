@@ -52,6 +52,12 @@ export default defineType({
       description: 'Color for the decorative border (e.g., #AABBCC)',
       initialValue: '#AABBCC', // Example default color
     }),
+    defineField({
+      name: 'embdedCode',
+      title: 'Embded Code',
+      type: 'string',
+      description: 'Embeded code for instagram profile',
+    }),
   ],
   preview: {
     select: {
