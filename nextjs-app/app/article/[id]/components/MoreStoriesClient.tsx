@@ -23,13 +23,11 @@ export const MoreStoriesClient:FC<FeaturedStoriesClientProps> = ({storiesData}) 
   const isMobile = false;
   const builder = imageUrlBuilder(client);
   const router = useRouter();
-    console.log(storiesData, 'ramvinay stories')
   return (
     <Flex border={'none'} w={"100%"} h={"auto"}>
       <Flex
         w={"100%"}
-        p={isMobile ? '0 20px' : "40px 80px"}
-        pb={'0'}
+        p={isMobile ? '0 20px' : "80px 270px"}
         border={'none'}
         flexDir={"column"}
       >
@@ -49,7 +47,7 @@ export const MoreStoriesClient:FC<FeaturedStoriesClientProps> = ({storiesData}) 
             cursor={'pointer'}>
               <Flex
                 w={"100%"}
-                h={"400px"}
+                h={"300px"}
                 mb={4}
                 bgImage={builder.image(story.coverImage).url() || ""}
                 bgSize="cover"

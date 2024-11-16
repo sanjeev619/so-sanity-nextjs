@@ -1,7 +1,10 @@
-import { Flex, Text,Button, useMediaQuery,  } from "@chakra-ui/react";
+import { Flex, Text,Button, useMediaQuery, Box,  } from "@chakra-ui/react";
 import SoFooterLogo from "../icons/so-coffee-footer";
 import DiagonaArrow from "../icons/arrow-diagonal";
 import MailIcon from "../icons/mail-icon";
+import SoCoffeeBrand from "../icons/soCoffee-brand";
+import InstaLogo from "../icons/instagram-icon";
+import XLogo from "../icons/x-icon";
 
 export default function Footer() {
   const isMobile = false;
@@ -34,6 +37,20 @@ export default function Footer() {
             <Flex>
               <MailIcon style={{ marginRight: "10px" }} />
               hello@socoffee.club
+            </Flex>
+            <Flex justifyContent={'space-between'}>
+              <Flex alignItems={'center'} mt={'10px'}>
+                <SoCoffeeBrand style={{ marginRight: "10px" }}/>
+                SoCoffee Origins Private Limited
+              </Flex>
+              <Flex gap={'30px'} alignItems={'center'} mt={'10px'}>
+                <Flex alignItems={'center'}>
+                  <InstaLogo style={{ marginRight: "10px" }} /> Instagram
+                </Flex>
+                <Flex alignItems={'center'}>
+                  <XLogo style={{ marginRight: "10px" }}/> X.com
+                </Flex>
+              </Flex>
             </Flex>
           </Flex>
         </Flex>

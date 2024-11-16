@@ -22,6 +22,8 @@ import imageUrlBuilder from "@sanity/image-url";
 import { useRouter } from "next/navigation";
 import { TopBar } from "@/common components/top-bar";
 import SoLogo from "@/app/icons/so-logo";
+import { BottomBar } from "@/common components/bottom-bar";
+import InstagramEmbed from "./InstaPost";
 
 type ArticleProps = {
   articleData: any;
@@ -41,7 +43,7 @@ const ArticleStories: FC<ArticleProps> = ({ articleData }) => {
       <Flex id="FEATURED_STORIES" w="100%" h="auto" flexDir="column">
         <Flex
           w="100%"
-          p={isMobile ? "0 20px" : "100px 30px"}
+          p={isMobile ? "0 20px" : "100px 70px"}
           pb="0"
           flexDir="column"
         >
@@ -147,7 +149,6 @@ const ArticleStories: FC<ArticleProps> = ({ articleData }) => {
                     </GridItem>
                   );
                 case "audioSection":
-                  console.log("Audio section ramvinay", post?.audioFile?.asset?._ref);
                   return <GridItem key={`quoteSection-${index}`} p="0 200px" mt="20px">
                   <Flex>
                     <LeftBar width={isMobile ? 8 : 15} color={post?.leftBorderColour} />
@@ -161,14 +162,18 @@ const ArticleStories: FC<ArticleProps> = ({ articleData }) => {
                 </GridItem>
                 case "instagramCard":
                   return <GridItem key={`quoteSection-${index}`} p="0 200px" mt="20px">
-                  <Flex justifyContent={'space-between'} px={'100px'}>
-                    <Flex flexDir={'column'} alignItems={'center'}justifyContent={'center'}>
-                      <SoLogo color="#B2B2B2"/>
-                      <Heading color={'#B2B2B2'}>Follow</Heading>
-                      <Heading color={'#B2B2B2'}>us on</Heading>
-                      <Heading textDecoration={'underline'} color={'#87B79D'}>Instagram</Heading>
+                  <Flex pos={'relative'} justifyContent={'space-between'} px={'100px'}>
+                    <TopBar color={post?.borderColour}/>
+                    <Flex w={'100%'} py={'50px'} justifyContent={'space-between'}>
+                      <Flex flexDir={'column'} alignItems={'center'}justifyContent={'center'}>
+                        <SoLogo color="#B2B2B2"/>
+                        <Heading mt={'20px'} fontFamily="Brocha W00 Regular, sans-serif" color={'#B2B2B2'}>Follow</Heading>
+                        <Heading fontFamily="Brocha W00 Regular, sans-serif" color={'#B2B2B2'}>us on</Heading>
+                        <Heading fontFamily="Brocha W00 Regular, sans-serif" textDecoration={'underline'} color={'#87B79D'}>Instagram</Heading>
+                      </Flex>
+                      <InstagramEmbed embedHtml={post?.linkText}/>
                     </Flex>
-                    <Box dangerouslySetInnerHTML={{ __html: post?.linkText }} />
+                    <BottomBar style={{transform:'rotate(180deg)', bottom: '0'}} color={post?.borderColour}/>
                   </Flex>
                 </GridItem>
                 case "bannerProfileOverviewSection":

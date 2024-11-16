@@ -25,7 +25,7 @@ const ArticlePage = async ({ params }: { params: { id: string } }) => {
           className="main"
           style={{ width: "100%", height: "100vh", overflow: "auto" }}
         >
-          <Navbar title={articleData?.articleType || 'Article'} />
+          <Navbar />
           <ArticleStories articleData={articleData} />
           <MoreStories storyType={articleData?.articleType}/>    
           <Footer/>
