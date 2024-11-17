@@ -13,9 +13,9 @@ import {
 import React, { FC } from "react";
 import FeaturedArrow from "../icons/featured_arrow";
 import Logo from "../icons/logo";
-import { LeftBar } from "../../common components/left-bar";
+import { LeftBar } from "./left-bar";
 import DiagonaArrow from "../icons/arrow-diagonal";
-import { featuredStories } from "@/constants/sample-data";
+import { featuredStories } from "@/app/constants/sample-data";
 import imageUrlBuilder from '@sanity/image-url';
 import { client } from "@/sanity/lib/client";
 import { useRouter } from 'next/navigation';

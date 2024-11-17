@@ -1,6 +1,6 @@
 "use client";
 import { FC, useState, useEffect, useRef } from 'react';
-import SideBar from '../app/icons/side-bar';
+import SideBar from '../icons/side-bar';
 import { Flex } from '@chakra-ui/react';
 
 export type BottomBarProps = {

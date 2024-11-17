@@ -2,14 +2,14 @@ import { Box, Button, ChakraProvider, Flex, Heading, Text, useMediaQuery, Image 
 import React from "react";
 import Logo from "./icons/logo";
 import {FeaturedStories} from "@/app/components/FeaturedStoriesComponent";
-import StayConnected from "@/common components/stay-connected";
-import Navbar from "@/common components/navbar";
-import '@/styles/globals.css'
+import StayConnected from "@/app/components/stay-connected";
+import Navbar from "@/app/components/navbar";
+import '@/app/globals.css'
 import { PeopleBehindTheCup } from "./components/PeopleBehindTheCupComponent";
 import Footer from "./components/Footer";
 import { FirstPrinciplesOfCoffee } from "./components/FirstPrinciplesOfCoffee";
 import { StoriesFromEstate } from "./components/StoriesFromEstate";
-import { Landing } from "@/common components/landing-page";
+import { Landing } from "@/app/components/landing-page";
 
 export default function Home() {
   const isMobile = false;
@@ -19,7 +19,7 @@ export default function Home() {
         style={{ width: "100%", height: "100vh", overflow: "auto" }}
       >
         <Landing/>
-        <Navbar />
+        <Navbar title={""} />
         <FeaturedStories />
         <PeopleBehindTheCup/>
         <FirstPrinciplesOfCoffee />

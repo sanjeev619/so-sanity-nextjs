@@ -13,16 +13,16 @@ import {
 } from "@chakra-ui/react";
 import React, { FC } from "react";
 import FeaturedArrow from "@/app/icons/featured_arrow";
-import { LeftBar } from "@/common components/left-bar";
+import { LeftBar } from "@/app/components/left-bar";
 import { PortableText, PortableTextBlock } from "next-sanity";
 import ShareIcon from "@/app/icons/share-button";
 import AudioPlayer from "@/app/components/AudioPlayer";
 import { client } from "@/sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
 import { useRouter } from "next/navigation";
-import { TopBar } from "@/common components/top-bar";
+import { TopBar } from "@/app/components/top-bar";
 import SoLogo from "@/app/icons/so-logo";
-import { BottomBar } from "@/common components/bottom-bar";
+import { BottomBar } from "@/app/components/bottom-bar";
 import InstagramEmbed from "./InstaPost";
 
 type ArticleProps = {

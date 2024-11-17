@@ -11,7 +11,7 @@ import {
   useBreakpointValue
 } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { featuredStories } from "@/constants/sample-data";
+import { featuredStories } from "@/app/constants/sample-data";
 import imageUrlBuilder from '@sanity/image-url';
 import { client } from "@/sanity/lib/client";
 import { useRouter } from 'next/navigation';

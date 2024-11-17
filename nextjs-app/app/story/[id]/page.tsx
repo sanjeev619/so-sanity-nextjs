@@ -1,6 +1,6 @@
-import Navbar from '@/common components/navbar';
+import Navbar from '@/app/components/navbar';
 import { Box, ChakraProvider, Flex, Heading, Text } from '@chakra-ui/react';
-import {AllStories} from './components/all-stories';
+import {AllStories} from '../../components/all-stories';
 import { postsByArticleTypeQuery } from '@/sanity/lib/queries';
 import { sanityFetch } from '@/sanity/lib/live';
 

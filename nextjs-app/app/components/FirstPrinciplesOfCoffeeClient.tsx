@@ -13,7 +13,7 @@ import {
 import React, { FC, useEffect, useRef, useState } from "react";
 import FeaturedArrow from "@/app/icons/featured_arrow";
 import Logo from "@/app/icons/logo";
-import { LeftBar } from "@/common components/left-bar";
+import { LeftBar } from "@/app/components/left-bar";
 import DiagonaArrow from "@/app/icons/arrow-diagonal";
 import imageUrlBuilder from '@sanity/image-url';
 import { useRouter } from 'next/navigation';

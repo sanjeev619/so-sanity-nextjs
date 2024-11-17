@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from '@/common components/navbar';
+import Navbar from '@/app/components/navbar';
 
 const ClientNavbar = () => <Navbar />;
 
