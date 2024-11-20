@@ -3,6 +3,7 @@ import WaveSurfer from 'wavesurfer.js';
 import { client } from '@/sanity/lib/client';
 import PlayIcon from '../icons/play-icon';
 import { Box, Flex } from '@chakra-ui/react';
+import PauseIcon from '../icons/pause-icon';
 
 const fetchAudioUrl = async (ref: string): Promise<string> => {
   const url = getAudioUrl(ref);
@@ -84,7 +85,7 @@ const AudioPlayer = ({ audioRef, primaryColor = "#f76565"  }: { audioRef: string
       <Flex flexDir={'row'} alignContent={'center'}>
         <Flex flexDir={'column'} w={'20%'} alignItems={'center'} justifyContent={'center'}>
             <button onClick={togglePlay}>
-                {isPlaying ? <PlayIcon/> : <PlayIcon/>}
+                {isPlaying ? <PauseIcon/> : <PlayIcon/>}
             </button>
             <div>
                 {formatTime(currentTime)} / {formatTime(duration)}

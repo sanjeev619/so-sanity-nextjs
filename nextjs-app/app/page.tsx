@@ -12,11 +12,9 @@ import { StoriesFromEstate } from "./components/StoriesFromEstate";
 import { Landing } from "@/app/components/landing-page";
 
 export default function Home() {
-  const isMobile = false;
   return (
       <div
         className="main"
-        style={{ width: "100%", height: "100vh", overflow: "auto" }}
       >
         <Landing/>
         <Navbar title={""} />

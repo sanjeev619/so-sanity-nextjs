@@ -14,6 +14,24 @@ export const Landing = () => {
   const handleToggle = () => {
     setIsCollapsed(true);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Hide Landing when the page is scrolled down
+      if (window.scrollY > 0) {
+        setIsCollapsed(true);
+      }
+    };
+    console.log('ramvinay scroll created')
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup the event listener
+    return () => {
+      console.log('ramvinay scroll destroyed')
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     
         <Box onClick={handleToggle} padding={isMobile? '10px' : undefined} className={`collapsible ${isCollapsed ? 'collapsed' : ''} landing-image`}>
