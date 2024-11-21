@@ -13,18 +13,18 @@ import {
 import React, { FC, useEffect, useRef, useState } from "react";
 import FeaturedArrow from "@/app/icons/featured_arrow";
 import Logo from "@/app/icons/logo";
-import { LeftBar } from "@/common components/left-bar";
+import { LeftBar } from "@/app/components/left-bar";
 import DiagonaArrow from "@/app/icons/arrow-diagonal";
 import imageUrlBuilder from '@sanity/image-url';
 import { useRouter } from 'next/navigation';
 import { client } from "@/sanity/lib/client";
 
 export default function FirstPrinciple({firstPrincipleData}) {
-  const [isMobile] = useMediaQuery("(max-width: 80em)");
+  const [isMobile] = useMediaQuery("(max-width: 600px)");
   const builder = imageUrlBuilder(client);
   const router = useRouter();
   return (
-    <Flex className="tracked-section" id='first_principles_of_coffee' w={"100%"} h={"auto"} bg={'#FFFFFF'}>
+    <Flex className="tracked-section" id='first_principles_of_coffee' w={"100%"} h={"auto"} bg={'#FFFFFF'} pos={'relative'}>
       <LeftBar width={isMobile ? 8 : 15} color="#DE3944" />
       <Flex
         w={"100%"}

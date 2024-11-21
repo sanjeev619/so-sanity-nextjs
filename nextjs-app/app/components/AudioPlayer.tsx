@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 import { client } from '@/sanity/lib/client';
 import PlayIcon from '../icons/play-icon';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, useMediaQuery } from '@chakra-ui/react';
+import PauseIcon from '../icons/pause-icon';
 
 const fetchAudioUrl = async (ref: string): Promise<string> => {
   const url = getAudioUrl(ref);
@@ -16,6 +17,7 @@ function getAudioUrl(ref: string): string {
 
 const AudioPlayer = ({ audioRef, primaryColor = "#f76565"  }: { audioRef: string, primaryColor: string}) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMobile] = useMediaQuery("(max-width: 600px)");
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const waveSurferRef = useRef<WaveSurfer | null>(null);
@@ -84,11 +86,11 @@ const AudioPlayer = ({ audioRef, primaryColor = "#f76565"  }: { audioRef: string
       <Flex flexDir={'row'} alignContent={'center'}>
         <Flex flexDir={'column'} w={'20%'} alignItems={'center'} justifyContent={'center'}>
             <button onClick={togglePlay}>
-                {isPlaying ? <PlayIcon/> : <PlayIcon/>}
+                {isPlaying ? <PauseIcon width={isMobile ? '25px' : undefined}/> : <PlayIcon width={isMobile ? '25px' : undefined}/>}
             </button>
-            <div>
+            <Flex alignItems={'center'} textAlign={'center'} fontSize={isMobile ? '12px' : undefined}>
                 {formatTime(currentTime)} / {formatTime(duration)}
-            </div>
+            </Flex>
         </Flex>
         <Box w={'70%'} overflow={'hidden'} ref={containerRef}/>
       </Flex>

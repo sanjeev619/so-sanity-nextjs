@@ -13,9 +13,9 @@ import {
 import React, { FC, useEffect, useRef, useState } from "react";
 import FeaturedArrow from "@/app/icons/featured_arrow";
 import Logo from "@/app/icons/logo";
-import { LeftBar } from "@/common components/left-bar";
+import { LeftBar } from "@/app/components/left-bar";
 import DiagonaArrow from "@/app/icons/arrow-diagonal";
-import { peopleBehindData } from "@/constants/sample-data";
+import { peopleBehindData } from "@/app/constants/sample-data";
 import imageUrlBuilder from '@sanity/image-url';
 import { client } from "@/sanity/lib/client";
 import { useRouter } from 'next/navigation';
@@ -25,11 +25,11 @@ type PeopleBehindTheCupClientProps = {
 }
 
 export const PeopleBehindTheCupClient:FC<PeopleBehindTheCupClientProps> = ({peopleBehindTheCup}) => {
-  const isMobile = false;
+  const [isMobile] = useMediaQuery("(max-width: 600px)");
   const builder = imageUrlBuilder(client);
   const router = useRouter();
   return (
-    <Flex className="tracked-section" id="people_behind_the_cup" w={"100%"} h={"auto"} bg={'#FFFBF6'}>
+    <Flex className="tracked-section" id="people_behind_the_cup" w={"100%"} h={"auto"} bg={'#FFFBF6'} pos={'relative'}>
       <LeftBar width={isMobile ? 8 : 15} color="#204027" />
       <Flex
         w={"100%"}
