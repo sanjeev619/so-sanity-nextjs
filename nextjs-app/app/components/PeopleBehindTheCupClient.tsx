@@ -25,11 +25,11 @@ type PeopleBehindTheCupClientProps = {
 }
 
 export const PeopleBehindTheCupClient:FC<PeopleBehindTheCupClientProps> = ({peopleBehindTheCup}) => {
-  const isMobile = false;
+  const [isMobile] = useMediaQuery("(max-width: 600px)");
   const builder = imageUrlBuilder(client);
   const router = useRouter();
   return (
-    <Flex className="tracked-section" id="people_behind_the_cup" w={"100%"} h={"auto"} bg={'#FFFBF6'}>
+    <Flex className="tracked-section" id="people_behind_the_cup" w={"100%"} h={"auto"} bg={'#FFFBF6'} pos={'relative'}>
       <LeftBar width={isMobile ? 8 : 15} color="#204027" />
       <Flex
         w={"100%"}

@@ -8,7 +8,8 @@ import {
   GridItem,
   Heading,
   Text,
-  useBreakpointValue
+  useBreakpointValue,
+  useMediaQuery
 } from "@chakra-ui/react";
 import React, { FC } from "react";
 import { featuredStories } from "@/app/constants/sample-data";
@@ -20,7 +21,7 @@ type FeaturedStoriesClientProps = {
 }
 
 export const MoreStoriesClient:FC<FeaturedStoriesClientProps> = ({storiesData}) => {
-  const isMobile = false;
+  const [isMobile] = useMediaQuery("(max-width: 600px)");
   const builder = imageUrlBuilder(client);
   const router = useRouter();
   return (

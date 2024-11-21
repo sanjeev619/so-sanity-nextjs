@@ -45,6 +45,7 @@ export default function StoriesFromEstateComponent({ storyData }: Props) {
       w={"100%"}
       h={"auto"}
       bg={"#FFFFFF"}
+      pos={'relative'}
     >
       <LeftBar width={isMobile ? 8 : 15} color="#204027" />
       <Flex

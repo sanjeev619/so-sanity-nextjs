@@ -22,7 +22,7 @@ const InstagramEmbed = ({ embedHtml }) => {
 
   return (
     <Box>
-      <Box dangerouslySetInnerHTML={{ __html: embedHtml }} />
+      <Box w={'100%'} dangerouslySetInnerHTML={{ __html: embedHtml }} />
     </Box>
   );
 };

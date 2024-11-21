@@ -20,7 +20,7 @@ import SoLogo from "@/app/icons/so-logo";
 import WhatsappLogo from "@/app/icons/whatsapp-icon";
 
 export default function StayConnected() {
-  const [isMobile] = useMediaQuery("(max-width: 80em)");
+  const [isMobile] = useMediaQuery("(max-width: 600px)");
   return (
     <Flex w={"100%"} h={"auto"} bg={'#FFFBF6'}>
       <Flex
@@ -34,7 +34,7 @@ export default function StayConnected() {
         <Flex gap={9} p={isMobile ? 0 : 16} flexDir={'column'} w={isMobile ? '100%' : '70%'} justifyContent={'center'} alignItems={'center'}>
         <SoLogo width={'164'} height={'93'}/>
         <Heading fontSize={'24px'} fontFamily={'Brocha W00 Regular'}>Let's stay connected?</Heading>
-        <Text textAlign={'center'} fontFamily={'Palatino Linotype'}>Join our WhatsApp community to get the latest coffee stories, exclusive updates, and special offers delivered straight to your phone. Be the first to know about new discoveries in the coffee world and deepen your coffee knowledge with us.</Text>
+        <Text p={isMobile ? '0 40px' : undefined} textAlign={'center'} fontFamily={'Palatino Linotype'}>Join our WhatsApp community to get the latest coffee stories, exclusive updates, and special offers delivered straight to your phone. Be the first to know about new discoveries in the coffee world and deepen your coffee knowledge with us.</Text>
         <Button
             background={"white"}
             borderRadius={"0"}

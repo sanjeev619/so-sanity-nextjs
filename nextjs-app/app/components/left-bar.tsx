@@ -2,20 +2,23 @@
 import { FC, useState, useEffect, useRef } from 'react';
 import SideBar from '../icons/side-bar';
 import { Flex } from '@chakra-ui/react';
+import { getLeftIconUrl } from '../constants/constant';
 
-export type LeftBarProps = {
+export type TopBarProps = {
     color: string;
     width?: number;
+    style?: any;
 };
 
-export const LeftBar: FC<LeftBarProps> = ({ color = "#000000", width=15 }) => {
+export const LeftBar: FC<TopBarProps> = ({ style,color = "#000000", width=8 }) => {
     const elementRef = useRef<HTMLDivElement>(null);
     const [parentHeight, setParentHeight] = useState(0);
-
     useEffect(() => {
         const updateParentHeight = () => {
             if (elementRef.current?.parentElement) {
-                setParentHeight(elementRef.current.parentElement.offsetHeight);
+                setTimeout(()=>{
+                    setParentHeight(elementRef.current.parentElement.offsetHeight);
+                },300)
             }
         };
 
@@ -31,14 +34,26 @@ export const LeftBar: FC<LeftBarProps> = ({ color = "#000000", width=15 }) => {
         // Cleanup observer on component unmount
         return () => observer.disconnect();
     }, []);
-
-    const numLoops = Math.ceil(parentHeight / (width *2));
-
+    console.log(parentHeight, 'ramvinay height')
+    
+    const getSvgWithColor = (color: string) => {
+        return `<svg width='${width}px' height='${width*2}' xmlns="http://www.w3.org/2000/svg" viewBox="-3 -1 3 6">
+	    <path d="M 0 0 A 1 1 0 0 0 0 4 V 5 Q -2 5 -3 5 V -1 H 0" fill="${color}"/>
+    </svg>`;
+    }
+    
     return (
-        <Flex ref={elementRef} flexDir="column" pos={'relative'}>
-            {Array.from({ length: numLoops }).map((_, index) => (
-                <SideBar key={index} width={`${width}px`} color={color} />
-            ))}
-        </Flex>
+        <Flex 
+            ref={elementRef}
+            w={width+'px'}
+            h={parentHeight > 0 ? Math.ceil(parentHeight/(width*2))*(width*2)+'px' : 'auto'}
+            pos={'relative'}
+            left={'0'}
+            style={{
+                ...style,
+                backgroundImage:  `url("data:image/svg+xml,${encodeURIComponent(getSvgWithColor(color))}")`,
+                backgroundRepeat: 'repeat-y'
+            }}
+        />
     );
 };

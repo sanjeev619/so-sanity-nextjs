@@ -33,7 +33,7 @@ export const AllStories:FC<AllStoriesProps> = ({featureStoriesData})=> {
   const router = useRouter();
   return (
     <>
-    <Flex w={"100%"} h={"auto"}>
+    <Flex w={"100%"} h={"auto"} pos={'relative'}>
       <LeftBar color="#87B79D" width={isMobile ? 8 : 15} />
       <Flex
         w={"100%"}
